@@ -45,7 +45,7 @@
             app:layout_constraintVertical_bias="0.016"
             android:textSize="28sp"
             android:textStyle="bold"
-            tools:text="Moana Jones" />
+            android:text="Moana Jones" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>
