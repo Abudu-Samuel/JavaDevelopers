@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">JavaDevelopers</string>
+    <string name="app_name">Java Developers</string>
     <string name="user_image">user image</string>
+    <string name="button">Details</string>
 </resources>
