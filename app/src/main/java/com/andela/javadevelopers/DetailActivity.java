@@ -35,6 +35,8 @@ public class DetailActivity extends AppCompatActivity {
         ImageView devUserImage = findViewById(R.id.imageView);
 
         devUserName.setText(userName);
+        devUserImage.setImageURI(Uri.parse(userImage));
+
 
         Glide
                 .with(this)
