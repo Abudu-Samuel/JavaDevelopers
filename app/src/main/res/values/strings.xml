@@ -2,4 +2,6 @@
     <string name="app_name">Java Developers</string>
     <string name="user_image">user image</string>
     <string name="button">Details</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="https_github_com_moana_jones">https://github.com/moana_jones</string>
 </resources>

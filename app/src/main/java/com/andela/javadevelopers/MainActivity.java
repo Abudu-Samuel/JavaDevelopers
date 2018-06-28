@@ -18,11 +18,11 @@ public class MainActivity extends AppCompatActivity {
     // dummy static data object
     static {
         listItems.add(new ListItem("https://avatars1.githubusercontent.com/u/22524619?s=400&v=4", "Moana Jones"));
-        listItems.add(new ListItem("https://avatars2.githubusercontent.com/u/15001016?v=4", "Johnny Doe"));
+        listItems.add(new ListItem("https://avatars2.githubusercontent.com/u/15001016?v=4", "Johnny Donny"));
         listItems.add(new ListItem("https://avatars0.githubusercontent.com/u/30238960?s=400&v=4", "Leumas Sam"));
         listItems.add(new ListItem("https://avatars1.githubusercontent.com/u/4929406?v=4", "Ceasar Clown"));
-        listItems.add(new ListItem("https://avatars0.githubusercontent.com/u/4760130?v=4", "Moana Jones"));
-        listItems.add(new ListItem("https://avatars0.githubusercontent.com/u/4107815?v=4", "Johnny Doe"));
+        listItems.add(new ListItem("https://avatars0.githubusercontent.com/u/4760130?v=4", "Jackie Chan"));
+        listItems.add(new ListItem("https://avatars0.githubusercontent.com/u/4107815?v=4", "Tinnie Tempa"));
 
     }
 
