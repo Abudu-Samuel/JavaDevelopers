@@ -1,4 +1,4 @@
-package com.andela.javadevelopers.adapter;
+package com.andela.javadevelopers;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,9 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.andela.javadevelopers.ListItem;
-import com.andela.javadevelopers.R;
-import com.andela.javadevelopers.view.DetailActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -48,7 +45,6 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
         final ListItem listItem = listItems.get(position);
         final String userName = listItems.get(position).getUsername();
         final String userImage = listItems.get(position).getImage();
-        final String githubLink = listItems.get(position).getGithubLink();
 
         holder.textView.setText(listItem.getUsername());
 
@@ -65,8 +61,8 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("USER_NAME", userName);
+                Log.e("image", userImage);
                 intent.putExtra("USER_IMAGE", userImage);
-                intent.putExtra("GITHUB_LINK", githubLink);
 
                 context.startActivity(intent);
             }
@@ -83,14 +79,12 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
 
         public TextView textView;
         public ImageView imageView;
-        public TextView githubLink;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             textView = itemView.findViewById(R.id.textView);
             imageView = itemView.findViewById(R.id.imageView);
-            githubLink = itemView.findViewById(R.id.githubLink);
         }
     }
 }

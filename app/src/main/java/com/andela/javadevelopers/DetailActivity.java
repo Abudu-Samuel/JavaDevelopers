@@ -30,16 +30,11 @@ public class DetailActivity extends AppCompatActivity {
 
         String userName = intent.getStringExtra("USER_NAME");
         String userImage = intent.getStringExtra("USER_IMAGE");
-        String githubLink = intent.getStringExtra("GITHUB_LINK");
 
         TextView devUserName = findViewById(R.id.userName);
         ImageView devUserImage = findViewById(R.id.imageView);
-        TextView devGithubLink = findViewById(R.id.githubLink);
 
         devUserName.setText(userName);
-        devUserImage.setImageURI(Uri.parse(userImage));
-        devGithubLink.setText(githubLink);
-
 
         Glide
                 .with(this)
