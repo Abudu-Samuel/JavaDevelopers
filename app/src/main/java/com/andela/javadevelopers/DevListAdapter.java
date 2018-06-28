@@ -1,6 +1,7 @@
 package com.andela.javadevelopers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
@@ -42,7 +42,9 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        ListItem listItem = listItems.get(position);
+        final ListItem listItem = listItems.get(position);
+        final String userName = listItems.get(position).getUsername();
+        final String userImage = listItems.get(position).getImage();
 
         holder.textView.setText(listItem.getUsername());
 
@@ -57,7 +59,12 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Clicked on " + holder.getAdapterPosition(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("USER_NAME", userName);
+                Log.e("image", userImage);
+                intent.putExtra("USER_IMAGE", userImage);
+
+                context.startActivity(intent);
             }
         });
 
