@@ -16,7 +16,6 @@ public class ListItem {
         this.githubLink = githubLink;
     }
 
-//
     public String getImage() {
         return image;
     }
