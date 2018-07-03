@@ -8,12 +8,15 @@ public class ListItem {
 
     private String image;
     private String username;
+    private String githubLink;
 
     public ListItem(String image, String username) {
         this.image = image;
         this.username = username;
+        this.githubLink = githubLink;
     }
 
+//
     public String getImage() {
         return image;
     }
@@ -21,4 +24,6 @@ public class ListItem {
     public String getUsername() {
         return username;
     }
+
+    public String getGithubLink() { return githubLink; }
 }
