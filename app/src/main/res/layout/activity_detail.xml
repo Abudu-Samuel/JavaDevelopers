@@ -6,12 +6,12 @@
     android:layout_height="750dp"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
-    app:cardCornerRadius="40dp"
-    app:cardElevation="9dp"
     android:layout_marginTop="30dp"
     android:clickable="true"
     android:focusable="true"
-    app:cardBackgroundColor="@color/cardview_light_background">
+    app:cardBackgroundColor="@color/cardview_light_background"
+    app:cardCornerRadius="40dp"
+    app:cardElevation="9dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/https_github_com_moana_jones"
+            android:autoLink="web"
             android:textColor="#058474"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -102,12 +102,12 @@
             android:layout_marginBottom="68dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:contentDescription="icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.044"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_perm_contact_calendar_black_24dp"
-            android:contentDescription="icon" />
+            app:srcCompat="@drawable/ic_perm_contact_calendar_black_24dp" />
 
         <ImageView
             android:id="@+id/imageView5"
