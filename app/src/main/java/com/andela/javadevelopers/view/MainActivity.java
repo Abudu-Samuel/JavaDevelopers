@@ -6,9 +6,14 @@ import android.os.Bundle;
 import com.andela.javadevelopers.R;
 import com.andela.javadevelopers.presenter.GithubPresenter;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
+    /**
+     * The Github presenter.
+     */
     GithubPresenter githubPresenter = GithubPresenter.getInstance();
-
 
 
     @Override

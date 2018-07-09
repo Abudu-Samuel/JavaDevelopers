@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,15 +19,26 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
+
 /**
- * Created by andeladeveloper on 26/06/2018.
+ * The type Dev list adapter.
  */
-
 public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHolder> {
+    /**
+     * Array of listItems.
+     */
+    private final List<ListItem> listItems;
+    /**
+     * Context.
+     */
+    private final Context context;
 
-    private List<ListItem> listItems;
-    private Context context;
-
+    /**
+     * Instantiates a new Dev list adapter.
+     *
+     * @param listItems the list items
+     * @param context   the context
+     */
     public DevListAdapter(List<ListItem> listItems, Context context) {
         this.listItems = listItems;
         this.context = context;
@@ -71,7 +81,6 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
                 context.startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -79,13 +88,30 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
         return listItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    /**
+     * The type View holder.
+     */
+    class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView textView;
-        public ImageView imageView;
-        public TextView githubLink;
+        /**
+         * The Text view.
+         */
+        TextView textView;
+        /**
+         * The Image view.
+         */
+        ImageView imageView;
+        /**
+         * The Github link.
+         */
+        TextView githubLink;
 
-        public ViewHolder(View itemView) {
+        /**
+         * Instantiates a new View holder.
+         *
+         * @param itemView the item view
+         */
+        ViewHolder(View itemView) {
             super(itemView);
 
             textView = itemView.findViewById(R.id.textView);

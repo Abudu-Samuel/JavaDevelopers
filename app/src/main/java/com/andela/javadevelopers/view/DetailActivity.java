@@ -10,8 +10,17 @@ import com.andela.javadevelopers.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+/**
+ * The type Detail activity.
+ */
 public class DetailActivity extends AppCompatActivity {
+    /**
+     * The User name.
+     */
     String userName;
+    /**
+     * The Intent.
+     */
     Intent intent;
 
     @Override
@@ -25,6 +34,9 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(userName);
     }
 
+    /**
+     * Display user github profile.
+     */
     private void showProfile() {
         userName = intent.getStringExtra("USER_NAME");
         String userImage = intent.getStringExtra("USER_IMAGE");
