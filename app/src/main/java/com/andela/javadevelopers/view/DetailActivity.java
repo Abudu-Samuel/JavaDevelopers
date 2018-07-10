@@ -38,13 +38,16 @@ public class DetailActivity extends AppCompatActivity {
      * Display user github profile.
      */
     private void showProfile() {
-        userName = intent.getStringExtra("USER_NAME");
-        String userImage = intent.getStringExtra("USER_IMAGE");
+        userName = intent.getStringExtra("username");
+        String userImage = intent.getStringExtra("user image");
+        String gitHubLink = intent.getStringExtra("github link");
 
         TextView devUserName = findViewById(R.id.userName);
         ImageView devUserImage = findViewById(R.id.imageView);
+        TextView devGithubLink = findViewById(R.id.githubLink);
 
         devUserName.setText(userName);
+        devGithubLink.setText(gitHubLink);
 
         Glide
                 .with(this)

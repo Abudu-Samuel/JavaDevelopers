@@ -17,6 +17,7 @@ public class GithubUsersResponse {
     @Expose
     private List<GithubUsers> githubUsers;
 
+
     /**
      * Gets github users.
      *
