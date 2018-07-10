@@ -10,9 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import com.andela.javadevelopers.ListItem;
 import com.andela.javadevelopers.R;
+import com.andela.javadevelopers.model.GithubUsers;
 import com.andela.javadevelopers.view.DetailActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -25,22 +24,23 @@ import java.util.List;
  */
 public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHolder> {
     /**
-     * Array of listItems.
+     * Array of githubUsers.
      */
-    private final List<ListItem> listItems;
+    private final List<GithubUsers> githubUsers;
     /**
      * Context.
      */
     private final Context context;
 
+
     /**
      * Instantiates a new Dev list adapter.
      *
-     * @param listItems the list items
-     * @param context   the context
+     * @param githubUsers the github users
+     * @param context     the context
      */
-    public DevListAdapter(List<ListItem> listItems, Context context) {
-        this.listItems = listItems;
+    public DevListAdapter(List<GithubUsers> githubUsers, Context context) {
+        this.githubUsers = githubUsers;
         this.context = context;
     }
 
@@ -53,18 +53,18 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
 
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
-        final ListItem listItem = listItems.get(position);
-        final String userName = listItems.get(position).getUsername();
-        final String userImage = listItems.get(position).getImage();
-        final String githubLink = listItems.get(position).getGithubLink();
+        final String userName = githubUsers.get(position).getUsername();
+        final String userImage = githubUsers.get(position).getUserImage();
+        final String githubLink = githubUsers.get(position).getGithubLink();
 
-        holder.textView.setText(listItem.getUsername());
+        holder.textView.setText(userName);
 
         Glide
                 .with(context)
-                .load(listItem.getImage())
+                .load(userImage)
                 .apply(new RequestOptions()
                         .placeholder(R.drawable.image_placeholder)
                 )
@@ -74,9 +74,9 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("USER_NAME", userName);
-                intent.putExtra("USER_IMAGE", userImage);
-                intent.putExtra("GITHUB_LINK", githubLink);
+                intent.putExtra("username", userName);
+                intent.putExtra("user image", userImage);
+                intent.putExtra("github link", githubLink);
 
                 context.startActivity(intent);
             }
@@ -85,7 +85,7 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        return listItems.size();
+        return githubUsers.size();
     }
 
     /**
