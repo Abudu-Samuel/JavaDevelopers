@@ -1,28 +1,61 @@
 package com.andela.javadevelopers;
 
+
 /**
- * Created by andeladeveloper on 26/06/2018.
+ * The type List item.
  */
-
 public class ListItem {
+    /**
+     * String image.
+     */
+    private final String image;
+    /**
+     * String username.
+     */
+    private final String username;
+    /**
+     * String githubLink.
+     */
+    private final String githubLink;
 
-    private String image;
-    private String username;
-    private String githubLink;
-
-    public ListItem(String image, String username) {
+    /**
+     * Instantiates a new List item.
+     *
+     * @param image    the image
+     * @param username the username
+     * @param githubLink the githubLink
+     */
+    public ListItem(String image, String username, String githubLink) {
         this.image = image;
         this.username = username;
         this.githubLink = githubLink;
     }
 
+    /**
+     * Gets image.
+     *
+     * @return the image
+     */
     public String getImage() {
         return image;
     }
 
+    /**
+     * Gets username.
+     *
+     * @return the username
+     */
     public String getUsername() {
         return username;
     }
 
-    public String getGithubLink() { return githubLink; }
+    /**
+     * Gets github link.
+     *
+     * @return the github link
+     */
+    public String getGithubLink() {
+        return githubLink;
+    }
+
 }

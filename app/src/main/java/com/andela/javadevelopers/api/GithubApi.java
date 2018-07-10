@@ -3,14 +3,26 @@ package com.andela.javadevelopers.api;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by andeladeveloper on 29/06/2018.
- */
 
+/**
+ * The type Github api.
+ */
 public class GithubApi {
+
+    /**
+     * String BASE_URL.
+     */
     private static final String BASE_URL = "https://api.github.com/";
+    /**
+     * Sting Retrofit.
+     */
     private static Retrofit retrofit = null;
 
+    /**
+     * Gets client.
+     *
+     * @return the client
+     */
     public GithubService getClient() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
