@@ -1,12 +1,15 @@
 package com.andela.javadevelopers.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by andeladeveloper on 29/06/2018.
  */
-public class GithubUsers {
+public class GithubUsers implements Parcelable {
 
     /**
      * Serialized name.
@@ -95,4 +98,52 @@ public class GithubUsers {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(userImage);
+        parcel.writeString(username);
+        parcel.writeString(githubLink);
+    }
+
+    /**
+     * Instantiates a new Github users.
+     *
+     * @param in the in
+     */
+    protected GithubUsers(Parcel in) {
+        username = in.readString();
+        githubLink = in.readString();
+        userImage = in.readString();
+    }
+
+    /**
+     * New array github users [ ].
+     *
+     * @param size the size
+     * @return the github users [ ]
+     */
+    public GithubUsers[] newArray(int size) {
+        return new GithubUsers[size];
+    }
+
+    /**
+     * The constant CREATOR.
+     */
+    public static final Creator<GithubUsers> CREATOR = new Creator<GithubUsers>() {
+        @Override
+        public GithubUsers createFromParcel(Parcel parcel) {
+            return new GithubUsers(parcel);
+        }
+
+        @Override
+        public GithubUsers[] newArray(int i) {
+            return new GithubUsers[0];
+        }
+    };
 }
