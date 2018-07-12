@@ -4,4 +4,5 @@
     <string name="button">Details</string>
     <string name="title_activity_detail">DetailActivity</string>
     <string name="https_github_com_moana_jones">https://github.com/moana_jones</string>
+    <string name="share_message">Check out this awesome developer @</string>
 </resources>

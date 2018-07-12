@@ -8,3 +8,6 @@
 /captures
 .externalNativeBuild
 .idea/kotlinc.xml
+
+.idea/instapk.xml
+instapk.log*
