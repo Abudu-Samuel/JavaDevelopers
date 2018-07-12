@@ -1,4 +1,4 @@
-package com.andela.javadevelopers.view;
+package com.andela.javadevelopers.home.view;
 
 import android.app.ProgressDialog;
 import android.os.Parcelable;
@@ -9,10 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.andela.javadevelopers.R;
-import com.andela.javadevelopers.adapter.DevListAdapter;
+import com.andela.javadevelopers.home.adapter.DevListAdapter;
 import com.andela.javadevelopers.contract.MainContract;
-import com.andela.javadevelopers.model.GithubUsers;
-import com.andela.javadevelopers.presenter.GithubPresenter;
+import com.andela.javadevelopers.home.model.GithubUsers;
+import com.andela.javadevelopers.home.presenter.GithubPresenter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.andela.javadevelopers.view;
+package com.andela.javadevelopers.userDetail.view;
 
 import android.content.Intent;
 import android.support.v4.app.ShareCompat;
@@ -47,7 +47,6 @@ public class DetailActivity extends AppCompatActivity {
      * @return the IntentBuilder
      */
     private Intent createShareIntent() {
-
         StringBuilder shareMessage = new StringBuilder();
         shareMessage.append(getResources().getString(R.string.share_message))
                 .append(userName).append(", ").append(gitHubLink);

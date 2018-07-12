@@ -1,4 +1,4 @@
-package com.andela.javadevelopers.adapter;
+package com.andela.javadevelopers.home.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andela.javadevelopers.R;
-import com.andela.javadevelopers.model.GithubUsers;
-import com.andela.javadevelopers.view.DetailActivity;
+import com.andela.javadevelopers.home.model.GithubUsers;
+import com.andela.javadevelopers.userDetail.view.DetailActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
