@@ -1,11 +1,11 @@
-package com.andela.javadevelopers.presenter;
+package com.andela.javadevelopers.home.presenter;
 
 import android.support.annotation.NonNull;
 
-import com.andela.javadevelopers.api.GithubApi;
+import com.andela.javadevelopers.network.GithubApi;
 import com.andela.javadevelopers.contract.MainContract;
-import com.andela.javadevelopers.model.GithubUsers;
-import com.andela.javadevelopers.model.GithubUsersResponse;
+import com.andela.javadevelopers.home.model.GithubUsers;
+import com.andela.javadevelopers.home.model.GithubUsersResponse;
 
 import java.util.List;
 

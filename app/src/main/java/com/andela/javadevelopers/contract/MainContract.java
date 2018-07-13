@@ -1,6 +1,6 @@
 package com.andela.javadevelopers.contract;
 
-import com.andela.javadevelopers.model.GithubUsers;
+import com.andela.javadevelopers.home.model.GithubUsers;
 
 
 import java.util.List;

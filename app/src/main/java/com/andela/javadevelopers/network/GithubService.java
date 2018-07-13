@@ -1,6 +1,6 @@
-package com.andela.javadevelopers.api;
+package com.andela.javadevelopers.network;
 
-import com.andela.javadevelopers.model.GithubUsersResponse;
+import com.andela.javadevelopers.home.model.GithubUsersResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
