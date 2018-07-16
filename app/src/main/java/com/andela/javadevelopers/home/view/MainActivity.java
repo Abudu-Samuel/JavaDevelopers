@@ -1,12 +1,17 @@
 package com.andela.javadevelopers.home.view;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Parcelable;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.andela.javadevelopers.R;
 import com.andela.javadevelopers.home.adapter.DevListAdapter;
@@ -32,6 +37,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
      */
     private static final String PARCEL_KEY = "java";
 
+    /**
+     * The Constraint layout.
+     */
+    ConstraintLayout constraintLayout;
+
+    /**
+     * The Swipe refresh layout.
+     */
+    SwipeRefreshLayout swipeRefreshLayout;
 
     /**
      * ProgressDialog.
@@ -49,13 +63,18 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        showLoader();
+        swipeRefreshLayout = findViewById(R.id.swipeContainer);
+        constraintLayout = findViewById(R.id.constraint_layout);
         if (savedInstanceState != null) {
             githubUsersParcel = savedInstanceState.getParcelableArrayList(PARCEL_KEY);
             displayDevList(githubUsersParcel);
-            hideLoader();
         } else {
-            githubPresenter.queryApi();
+            if (githubPresenter.getNetworkConnectionState()) {
+                githubPresenter.queryApi();
+            } else {
+                displaySnackBar(false);
+            }
+
         }
 
     }
@@ -91,5 +110,35 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         if (progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
+    }
+
+    /**
+     * Gets context.
+     *
+     * @return the context
+     */
+    public Context getViewContext() {
+        return getApplicationContext();
+    }
+
+    /**
+     * Display snack bar.
+     *
+     * @param networkStatus the network status
+     */
+    public void displaySnackBar(boolean networkStatus) {
+        String status = "No internet connection";
+        if (networkStatus) {
+            status = "Bad connection";
+        }
+        Snackbar snackbar = Snackbar
+                .make(swipeRefreshLayout, status, Snackbar.LENGTH_INDEFINITE)
+                .setAction("Try Again", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        githubPresenter.queryApi();
+                    }
+                });
+        snackbar.show();
     }
 }

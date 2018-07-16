@@ -1,5 +1,7 @@
 package com.andela.javadevelopers.contract;
 
+import android.content.Context;
+
 import com.andela.javadevelopers.home.model.GithubUsers;
 
 
@@ -29,6 +31,20 @@ public interface MainContract {
          * Hide loader.
          */
         void hideLoader();
+
+        /**
+         * Display snack bar.
+         *
+         * @param networkStatus the network status
+         */
+        void displaySnackBar(boolean networkStatus);
+
+        /**
+         * Gets context.
+         *
+         * @return the context
+         */
+        Context getViewContext();
     }
 
     /**
@@ -37,8 +53,14 @@ public interface MainContract {
     interface MainPresenter {
         /**
          * Query api github presenter.
-         *
          */
         void queryApi();
+
+        /**
+         * Gets network state.
+         *
+         * @return the network state
+         */
+        boolean getNetworkConnectionState();
     }
 }

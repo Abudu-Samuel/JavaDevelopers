@@ -1,11 +1,13 @@
 package com.andela.javadevelopers.home.presenter;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.andela.javadevelopers.network.GithubApi;
 import com.andela.javadevelopers.contract.MainContract;
 import com.andela.javadevelopers.home.model.GithubUsers;
 import com.andela.javadevelopers.home.model.GithubUsersResponse;
+import com.andela.javadevelopers.util.Connectivity;
 
 import java.util.List;
 
@@ -30,7 +32,8 @@ public final class GithubPresenter implements MainContract.MainPresenter {
     /**
      * The M view.
      */
-   private final MainContract.MainView mView;
+    private final MainContract.MainView mView;
+
     /**
      * GithubPresenter Method.
      *
@@ -46,10 +49,10 @@ public final class GithubPresenter implements MainContract.MainPresenter {
 
     /**
      * Gets developers.
-     *
      */
     @Override
     public void queryApi() {
+        mView.showLoader();
         developerService
                 .getClient()
                 .getItems()
@@ -57,20 +60,32 @@ public final class GithubPresenter implements MainContract.MainPresenter {
 
                     @Override
                     public void onResponse(@NonNull Call<GithubUsersResponse> call,
-                                           @NonNull Response<GithubUsersResponse> response) {
+                                           @Nullable Response<GithubUsersResponse> response) {
+                        if (response != null) {
+                            listItems = response.body().getGithubUsers();
+                            mView.displayDevList(listItems);
+                        } else {
+                            mView.displaySnackBar(true);
+                        }
 
-                       listItems = response.body().getGithubUsers();
-
-                        mView.displayDevList(listItems);
                         mView.hideLoader();
                     }
 
                     @Override
                     public void onFailure(@NonNull Call<GithubUsersResponse> call,
                                           @NonNull Throwable t) {
-                      mView.hideLoader();
+                        mView.hideLoader();
+                        mView.displaySnackBar(false);
                     }
                 });
     }
-}
 
+    /**
+     * Gets network state.
+     *
+     * @return the network state
+     */
+    public boolean getNetworkConnectionState() {
+        return Connectivity.isConnected(mView.getViewContext());
+    }
+}
