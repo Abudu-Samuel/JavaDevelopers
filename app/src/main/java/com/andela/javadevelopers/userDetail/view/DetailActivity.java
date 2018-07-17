@@ -1,6 +1,7 @@
 package com.andela.javadevelopers.userDetail.view;
 
 import android.content.Intent;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,15 @@ public class DetailActivity extends AppCompatActivity {
      * The Intent.
      */
     Intent intent;
+    /**
+     * Toolbar.
+     */
+    android.support.v7.widget.Toolbar toolbar;
+
+    /**
+     * The Collapsing toolbar layout.
+     */
+    CollapsingToolbarLayout collapsingToolbarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +47,13 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         intent = this.getIntent();
 
+        toolbar = findViewById(R.id.toolbar_id);
+        collapsingToolbarLayout = findViewById(R.id.collapse_toolbar);
+        setSupportActionBar(toolbar);
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
         showProfile();
-
         getSupportActionBar().setTitle(userName);
 
     }
