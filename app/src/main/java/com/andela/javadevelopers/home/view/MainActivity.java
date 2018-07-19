@@ -2,6 +2,7 @@ package com.andela.javadevelopers.home.view;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Parcelable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
@@ -18,6 +19,7 @@ import com.andela.javadevelopers.home.adapter.DevListAdapter;
 import com.andela.javadevelopers.contract.MainContract;
 import com.andela.javadevelopers.home.model.GithubUsers;
 import com.andela.javadevelopers.home.presenter.GithubPresenter;
+import com.andela.javadevelopers.userDetail.view.DetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
      * ProgressDialog.
      */
     private ProgressDialog progressDialog;
-
 
     /**
      * The Github presenter.
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        adapter = new DevListAdapter(githubUsers, this);
+        adapter = new DevListAdapter(githubUsers, recyclerItemClickListener);
         recyclerView.setAdapter(adapter);
         Log.d("test", "message");
     }
@@ -141,4 +142,22 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
                 });
         snackbar.show();
     }
+
+    /**
+     * RecyclerItem click event listener.
+     */
+    MainContract.RecyclerItemClickListener recyclerItemClickListener =
+            new MainContract.RecyclerItemClickListener() {
+                @Override
+                public void onItemClick(GithubUsers githubUsers) {
+                    Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+
+                    Log.e("M USERNAME", githubUsers.getUsername());
+                    Log.e("M IMAGE", githubUsers.getUserImage());
+                    Log.e("M GITLINK", githubUsers.getGithubLink());
+
+                    intent.putExtra("githuber", githubUsers);
+                    startActivity(intent);
+                }
+            };
 }

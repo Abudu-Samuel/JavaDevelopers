@@ -63,4 +63,49 @@ public interface MainContract {
          */
         boolean getNetworkConnectionState();
     }
+
+    /**
+     * The interface Get github intractor.
+     */
+    interface GetGithubIntractor {
+
+        /**
+         * The interface On finished listener.
+         */
+        interface OnFinishedListener {
+            /**
+             * On finished.
+             *
+             * @param githubUsers the github users
+             */
+            void onFinished(List<GithubUsers> githubUsers);
+
+            /**
+             * On failure.
+             *
+             * @param throwable the throwable
+             */
+            void onFailure(Throwable throwable);
+        }
+
+        /**
+         * Gets github list.
+         *
+         * @param onFinishedListener the on finished listener
+         */
+        void getGithubList(OnFinishedListener onFinishedListener);
+    }
+
+
+    /**
+     * The interface Recycler item click listener.
+     */
+    interface RecyclerItemClickListener {
+        /**
+         * On item click.
+         *
+         * @param githubUsers the github users
+         */
+        void onItemClick(GithubUsers githubUsers);
+    }
 }
