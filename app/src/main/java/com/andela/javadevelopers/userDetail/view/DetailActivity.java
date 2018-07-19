@@ -5,7 +5,6 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,6 +16,9 @@ import com.andela.javadevelopers.home.model.GithubUsers;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * The type Detail activity.
  */
@@ -24,15 +26,15 @@ public class DetailActivity extends AppCompatActivity {
     /**
      * The Dev user name.
      */
-    private TextView devUserName;
+    @BindView(R.id.userName) TextView devUserName;
     /**
      * The Dev user image.
      */
-    private ImageView devUserImage;
+    @BindView(R.id.imageView) ImageView devUserImage;
     /**
      * The Dev github link.
      */
-    private TextView devGithubLink;
+    @BindView(R.id.githubLink) TextView devGithubLink;
     /**
      * The User name.
      */
@@ -49,34 +51,26 @@ public class DetailActivity extends AppCompatActivity {
     /**
      * Toolbar.
      */
-    android.support.v7.widget.Toolbar toolbar;
+    @BindView(R.id.toolbar_id) android.support.v7.widget.Toolbar toolbar;
 
     /**
      * The Collapsing toolbar layout.
      */
-    CollapsingToolbarLayout collapsingToolbarLayout;
+    @BindView(R.id.collapse_toolbar) CollapsingToolbarLayout collapsingToolbarLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        devUserName = findViewById(R.id.userName);
-        devUserImage = findViewById(R.id.imageView);
-        devGithubLink = findViewById(R.id.githubLink);
-
-        toolbar = findViewById(R.id.toolbar_id);
-        collapsingToolbarLayout = findViewById(R.id.collapse_toolbar);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
 
         GithubUsers githubUsers = getIntent().getParcelableExtra("githuber");
-
-        Log.e("USERNAME", githubUsers.getUsername());
-        Log.e("IMAGE", githubUsers.getUserImage());
-        Log.e("GITLINK", githubUsers.getGithubLink());
 
         userName = githubUsers.getGithubLink();
         userImage = githubUsers.getUsername();

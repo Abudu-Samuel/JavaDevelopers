@@ -16,6 +16,9 @@ import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 /**
  * The type Dev list adapter.
@@ -88,11 +91,11 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
         /**
          * The Text view.
          */
-        TextView textView;
+        @BindView(R.id.textView) TextView textView;
         /**
          * The Image view.
          */
-        ImageView imageView;
+        @BindView(R.id.imageView) ImageView imageView;
         /**
          * Instantiates a new View holder.
          *
@@ -101,8 +104,7 @@ public class DevListAdapter extends RecyclerView.Adapter<DevListAdapter.ViewHold
         ViewHolder(View itemView) {
             super(itemView);
 
-            textView = itemView.findViewById(R.id.textView);
-            imageView = itemView.findViewById(R.id.imageView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }
