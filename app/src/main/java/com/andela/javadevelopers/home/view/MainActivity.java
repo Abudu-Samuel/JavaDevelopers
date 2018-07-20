@@ -24,6 +24,9 @@ import com.andela.javadevelopers.userDetail.view.DetailActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 /**
  * The type Main activity.
@@ -42,13 +45,16 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     /**
      * The Constraint layout.
      */
-    ConstraintLayout constraintLayout;
+    @BindView(R.id.constraint_layout) ConstraintLayout constraintLayout;
 
     /**
      * The Swipe refresh layout.
      */
-    SwipeRefreshLayout swipeRefreshLayout;
-
+    @BindView(R.id.swipeContainer) SwipeRefreshLayout swipeRefreshLayout;
+    /**
+     * .
+     */
+    @BindView(R.id.recycler_view) RecyclerView recyclerView;
     /**
      * ProgressDialog.
      */
@@ -64,8 +70,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        swipeRefreshLayout = findViewById(R.id.swipeContainer);
-        constraintLayout = findViewById(R.id.constraint_layout);
+        ButterKnife.bind(this);
         if (savedInstanceState != null) {
             githubUsersParcel = savedInstanceState.getParcelableArrayList(PARCEL_KEY);
             displayDevList(githubUsersParcel);
@@ -91,9 +96,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     public void displayDevList(List<GithubUsers> githubUsers) {
         githubUsersParcel = githubUsers;
 
-        RecyclerView recyclerView;
         RecyclerView.Adapter adapter;
-        recyclerView = findViewById(R.id.recycler_view);
+        ButterKnife.bind(this);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         adapter = new DevListAdapter(githubUsers, recyclerItemClickListener);
@@ -151,11 +155,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
                 @Override
                 public void onItemClick(GithubUsers githubUsers) {
                     Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-
-                    Log.e("M USERNAME", githubUsers.getUsername());
-                    Log.e("M IMAGE", githubUsers.getUserImage());
-                    Log.e("M GITLINK", githubUsers.getGithubLink());
-
                     intent.putExtra("githuber", githubUsers);
                     startActivity(intent);
                 }
