@@ -4,6 +4,7 @@ import com.andela.javadevelopers.home.model.GetGithubUserIntractor;
 import com.andela.javadevelopers.contract.MainContract;
 import com.andela.javadevelopers.home.model.GithubUsers;
 import com.andela.javadevelopers.util.Connectivity;
+import com.andela.javadevelopers.util.EspressoIdlingResource;
 
 import java.util.List;
 
@@ -65,5 +66,6 @@ public final class GithubPresenter implements MainContract.MainPresenter,
     public void onFailure(Throwable throwable) {
         mView.hideLoader();
         mView.displaySnackBar(false);
+        EspressoIdlingResource.decrement();
     }
 }

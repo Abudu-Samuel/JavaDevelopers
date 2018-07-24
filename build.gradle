@@ -43,5 +43,9 @@ ext {
     butterKnifeVersion = "8.8.1"
     robolectricVersion = "3.8"
     assertCoreVersion = "3.8.0"
+    testRuleVersion = "1.0.2"
     mockitoVersion = "2.5.4"
+    espressoIntentsVersion = "3.0.1"
+    espressoWebVersion = "3.0.1"
+    idlingVersion = "3.0.2"
 }
