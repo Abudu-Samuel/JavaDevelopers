@@ -52,6 +52,9 @@ connect your android mobile phone or simple use an inbuilt android emulator
 > $ ./gradlew test
 ```
 
+### Test Coverage
+![alt text](http://res.cloudinary.com/leumas/image/upload/v1532436281/uk4zfbct6kdz2saealuz.png)
+
 ## Contributing
 
 If you are interested in contributing to the development of this project ,

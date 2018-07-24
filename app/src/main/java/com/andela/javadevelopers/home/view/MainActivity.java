@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.andela.javadevelopers.R;
@@ -20,6 +19,7 @@ import com.andela.javadevelopers.contract.MainContract;
 import com.andela.javadevelopers.home.model.GithubUsers;
 import com.andela.javadevelopers.home.presenter.GithubPresenter;
 import com.andela.javadevelopers.userDetail.view.DetailActivity;
+import com.andela.javadevelopers.util.EspressoIdlingResource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,6 @@ import butterknife.ButterKnife;
  * The type Main activity.
  */
 public class MainActivity extends AppCompatActivity implements MainContract.MainView {
-
     /**
      * The Github users parcel.
      */
@@ -76,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
             displayDevList(githubUsersParcel);
         } else {
             if (githubPresenter.getNetworkConnectionState()) {
+                EspressoIdlingResource.increment();
                 githubPresenter.queryApi();
             } else {
                 displaySnackBar(false);
@@ -94,6 +94,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
 
     @Override
     public void displayDevList(List<GithubUsers> githubUsers) {
+        if (githubUsersParcel == null) {
+            EspressoIdlingResource.decrement();
+        }
         githubUsersParcel = githubUsers;
 
         RecyclerView.Adapter adapter;
@@ -102,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         adapter = new DevListAdapter(githubUsers, recyclerItemClickListener);
         recyclerView.setAdapter(adapter);
-        Log.d("test", "message");
+
     }
 
     @Override

@@ -17,14 +17,18 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled true
+        }
     }
     dexOptions {
         javaMaxHeapSize "1g"
     }
     testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
+        unitTests.includeAndroidResources = true
+    }
+    jacoco {
+        version = '0.7.9'
     }
 }
 
@@ -40,10 +44,15 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:${rootProject.retrofitVersion}"
     implementation "com.squareup.retrofit2:converter-gson:${rootProject.converterGsonVersion}"
     implementation "com.jakewharton:butterknife:${rootProject.butterKnifeVersion}"
+    implementation "com.android.support.test.espresso:espresso-idling-resource:${rootProject.idlingVersion}"
     testImplementation "junit:junit:${rootProject.jUnitVersion}"
     testImplementation "org.robolectric:robolectric:${rootProject.robolectricVersion}"
     testImplementation "org.assertj:assertj-core:${rootProject.assertCoreVersion}"
     testImplementation "org.mockito:mockito-core:${rootProject.mockitoVersion}"
+    androidTestImplementation "com.android.support.test:rules:${rootProject.testRuleVersion}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-intents:${rootProject.espressoIntentsVersion}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-web:${rootProject.espressoWebVersion}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:${rootProject.espressoVersion}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${rootProject.butterKnifeVersion}"
     androidTestImplementation "com.android.support.test:runner:${rootProject.testRunnerVersion}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${rootProject.espressoVersion}"

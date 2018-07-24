@@ -31,6 +31,20 @@ public class GithubUsers implements Parcelable {
     @SerializedName("login")
     @Expose
     private String username;
+
+    /**
+     * Instantiates a new Github users.
+     *
+     * @param userImage  the user image
+     * @param githubLink the github link
+     * @param username   the username
+     */
+    public GithubUsers(String userImage, String githubLink, String username) {
+        this.userImage = userImage;
+        this.githubLink = githubLink;
+        this.username = username;
+    }
+
     /**
      * Gets user image.
      *
