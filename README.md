@@ -14,8 +14,8 @@ It is an android app built using Java.
 - [How to contribute](#contributing)
 
 ## Features of the application
-- A view of list of Java developers from Nairobi, Kenya
-- A view of profile for a single developer
+- A list of Java developers from Nairobi, Kenya and Nigeria
+- View profile of a single developer
 - Share functionality
 - Developer Github profile link
 
