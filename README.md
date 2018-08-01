@@ -21,7 +21,7 @@ It is an android app built using Java.
 
 ## Technology used for development
 Java Developers application leverages:
-* [Java](https://nodejs.org/en/) - A high level multi-purpose programming language
+* [Java](https://java.com/en/download/) - A high level multi-purpose programming language
 * [Android Tools](https://developer.android.com/) - A platform for building mobile applications
 
 ## Getting Started
@@ -30,7 +30,7 @@ Java Developers application leverages:
 ```sh
 > $ git clone https://github.com/Abudu-Samuel/JavaDevelopers.git
 ```
-- Change directory into events-manager directory
+- Change directory into Java-Developers directory
 ```sh
 > $ cd javadevelopers
 ```
